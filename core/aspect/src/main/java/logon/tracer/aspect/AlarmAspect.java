@@ -1,9 +1,9 @@
 package logon.tracer.aspect;
 
-import logon.tracer.context.InfoContext;
-import logon.tracer.context.LogContext;
-import logon.tracer.factor.LogWarnServiceFactory;
-import logon.tracer.thread.LogThreadFactory;
+import logon.tracer.context.AlarmInfoContext;
+import logon.tracer.context.AlarmLogContext;
+import logon.tracer.factor.AlarmLogWarnServiceFactory;
+import logon.tracer.thread.AlarmLogThreadFactory;
 import logon.tracer.utils.ExceptionUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -21,12 +21,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 @Aspect
-public class LogonAspect {
+public class AlarmAspect {
 
   public static final String POINTCUT_SIGN =
-    "@within(com.future94.alarm.log.aspect.Logon) || @annotation(com.future94.alarm.log.aspect.Logon)";
+    "@within(logon.tracer.aspect.Alarm) || @annotation(logon.tracer.aspect.Alarm)";
 
-  private ExecutorService executorService = new ThreadPoolExecutor(1, Runtime.getRuntime().availableProcessors(), 300, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10), LogThreadFactory.create("logon-tracer-aspect-", false));
+  private ExecutorService executorService = new ThreadPoolExecutor(1, Runtime.getRuntime().availableProcessors(), 300, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10), AlarmLogThreadFactory.create("alarm-log-aspect-", false));
 
   @Pointcut(POINTCUT_SIGN)
   public void pointcut() {
@@ -36,16 +36,16 @@ public class LogonAspect {
   @AfterThrowing(value = "pointcut()", throwing = "ex")
   public void doRetryProcess(JoinPoint joinPoint, Throwable ex) throws Throwable {
     MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-    Logon logonMethod = signature.getMethod().getAnnotation(Logon.class);
-    Logon logonClass = signature.getMethod().getDeclaringClass().getAnnotation(Logon.class);
-    if (doWarnProcess(logonMethod, ex)
-      || doWarnProcess(logonClass, ex)
-      || LogContext.doWarnException(ex)
+    Alarm alarmMethod = signature.getMethod().getAnnotation(Alarm.class);
+    Alarm alarmClass = signature.getMethod().getDeclaringClass().getAnnotation(Alarm.class);
+    if (doWarnProcess(alarmMethod, ex)
+      || doWarnProcess(alarmClass, ex)
+      || AlarmLogContext.doWarnException(ex)
       || ExceptionUtils.doWarnExceptionInstance(ex)) {
       String threadName = Thread.currentThread().getName();
       StackTraceElement stackTraceElement = ex.getStackTrace()[0];
-      executorService.execute(() -> LogWarnServiceFactory.getServiceList().forEach(logWarnService -> logWarnService.send(
-        InfoContext.builder()
+      executorService.execute(() -> AlarmLogWarnServiceFactory.getServiceList().forEach(alarmLogWarnService -> alarmLogWarnService.send(
+        AlarmInfoContext.builder()
           .message(ex.getMessage())
           .throwableName(ex.getClass().getName())
           .loggerName(joinPoint.getSignature().getDeclaringTypeName())
@@ -60,12 +60,12 @@ public class LogonAspect {
     throw ex;
   }
 
-  private boolean doWarnProcess(Logon logon, Throwable ex) {
-    if (Objects.isNull(logon)) {
+  private boolean doWarnProcess(Alarm alarm, Throwable ex) {
+    if (Objects.isNull(alarm)) {
       return false;
     }
-    Class<? extends Throwable>[] doExtendWarnExceptionClasses = logon.doWarnException();
-    if (logon.warnExceptionExtend()) {
+    Class<? extends Throwable>[] doExtendWarnExceptionClasses = alarm.doWarnException();
+    if (alarm.warnExceptionExtend()) {
       return ExceptionUtils.doWarnExceptionExtend(ex, Arrays.asList(doExtendWarnExceptionClasses));
     } else {
       List<String> doWarnExceptionList = new ArrayList<>(doExtendWarnExceptionClasses.length);

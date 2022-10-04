@@ -1,11 +1,12 @@
 package logon.tracer;
 
-import logon.tracer.context.InfoContext;
-import logon.tracer.context.LogContext;
+import logon.tracer.context.AlarmInfoContext;
+import logon.tracer.context.AlarmLogContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class BaseWarnService implements LogWarnService {
+public abstract class BaseWarnService implements AlarmLogWarnService {
+
   private final Logger logger = LoggerFactory.getLogger(BaseWarnService.class);
 
   private int maxRetryTimes;
@@ -13,7 +14,7 @@ public abstract class BaseWarnService implements LogWarnService {
   private int retrySleepMillis;
 
   public BaseWarnService() {
-    this(LogContext.getMaxRetryTimes(), LogContext.getRetrySleepMillis());
+    this(AlarmLogContext.getMaxRetryTimes(), AlarmLogContext.getRetrySleepMillis());
   }
 
   public BaseWarnService(int maxRetryTimes, int retrySleepMillis) {
@@ -21,7 +22,8 @@ public abstract class BaseWarnService implements LogWarnService {
     this.retrySleepMillis = retrySleepMillis;
   }
 
-  public boolean send(InfoContext context, Throwable throwable) {
+  @Override
+  public boolean send(AlarmInfoContext context, Throwable throwable) {
     int retryTimes = 0;
     do {
       try {
@@ -43,5 +45,5 @@ public abstract class BaseWarnService implements LogWarnService {
     return false;
   }
 
-  protected abstract void doSend(InfoContext context, Throwable throwable) throws Exception;
+  protected abstract void doSend(AlarmInfoContext context, Throwable throwable) throws Exception;
 }

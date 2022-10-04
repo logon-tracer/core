@@ -11,9 +11,8 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Builder
 @Accessors(chain = true)
-public class LogSimpleConfig {
+public class AlarmMailContent {
+  private String subject;
 
-  private Boolean printStackTrace;
-
-  private Boolean simpleWarnInfo;
+  private String content;
 }

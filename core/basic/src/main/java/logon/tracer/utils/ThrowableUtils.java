@@ -1,8 +1,8 @@
 package logon.tracer.utils;
 
-import logon.tracer.context.InfoContext;
-import logon.tracer.context.LogContext;
-import logon.tracer.dto.MailContent;
+import logon.tracer.context.AlarmInfoContext;
+import logon.tracer.context.AlarmLogContext;
+import logon.tracer.dto.AlarmMailContent;
 
 import java.util.Objects;
 
@@ -10,22 +10,22 @@ public class ThrowableUtils {
   private static final String SEPARATOR = "\n";
   private static final String HTML_SEPARATOR = "<br />";
 
-  public static String workWeixinContent(InfoContext context, Throwable throwable) {
+  public static String workWeixinContent(AlarmInfoContext context, Throwable throwable) {
     return defaultContent(context, throwable, SEPARATOR);
   }
 
-  public static String dingtalkContent(InfoContext context, Throwable throwable) {
+  public static String dingtalkContent(AlarmInfoContext context, Throwable throwable) {
     return defaultContent(context, throwable, SEPARATOR);
   }
 
-  public static MailContent mailSubjectContent(InfoContext context, Throwable throwable) {
-    return new MailContent(context.getMessage(), defaultContent(context, throwable, HTML_SEPARATOR));
+  public static AlarmMailContent mailSubjectContent(AlarmInfoContext context, Throwable throwable) {
+    return new AlarmMailContent(context.getMessage(), defaultContent(context, throwable, HTML_SEPARATOR));
   }
 
-  private static String defaultContent(InfoContext context, Throwable throwable, String separator) {
+  private static String defaultContent(AlarmInfoContext context, Throwable throwable, String separator) {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(context.getMessage()).append(separator);
-    if (!LogContext.getSimpleWarnInfo()) {
+    if (!AlarmLogContext.getSimpleWarnInfo()) {
       stringBuilder.append("级别:").append(context.getLevel()).append(separator);
       if (Objects.nonNull(context.getThrowableName())) {
         stringBuilder.append("异常:").append(context.getThrowableName()).append(separator);
@@ -34,7 +34,7 @@ public class ThrowableUtils {
       stringBuilder.append("位置信息:").append(context.getClassName()).append(".").append(context.getMethodName()).append(isNativeMethod(context.getLineNumber()) ? "(Native Method)" : context.getFileName() != null && context.getLineNumber() >= 0 ? "(" + context.getFileName() + ":" + context.getLineNumber() + ")" : context.getFileName() != null ? "(" + context.getFileName() + ")" : "(Unknown Source)");
       stringBuilder.append(separator);
     }
-    if (LogContext.getPrintStackTrace()) {
+    if (AlarmLogContext.getPrintStackTrace()) {
       stringBuilder.append(printTrace(throwable));
     }
     return stringBuilder.toString();

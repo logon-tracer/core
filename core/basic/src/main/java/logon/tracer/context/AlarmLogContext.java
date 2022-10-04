@@ -1,6 +1,6 @@
 package logon.tracer.context;
 
-import logon.tracer.dto.LogSimpleConfig;
+import logon.tracer.dto.AlarmLogSimpleConfig;
 import logon.tracer.utils.ExceptionUtils;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class LogContext {
-  private static final Logger logger = LoggerFactory.getLogger(LogContext.class);
+public class AlarmLogContext {
+  private static final Logger logger = LoggerFactory.getLogger(AlarmLogContext.class);
 
   @Getter
   @Setter
@@ -38,13 +38,13 @@ public class LogContext {
 
   @Getter
   @Setter
-  private static MessageContext alarmMessageContext = new DefaultMessageContext();
+  private static AlarmMessageContext alarmMessageContext = new DefaultAlarmMessageContext();
 
-  private static LogSimpleConfig simpleConfig;
+  private static AlarmLogSimpleConfig simpleConfig;
 
-  public static LogSimpleConfig getSimpleConfig () {
+  public static AlarmLogSimpleConfig getSimpleConfig () {
     if (Objects.isNull(simpleConfig)) {
-      simpleConfig = LogSimpleConfig.builder().printStackTrace(printStackTrace).simpleWarnInfo(simpleWarnInfo).build();
+      simpleConfig = AlarmLogSimpleConfig.builder().printStackTrace(printStackTrace).simpleWarnInfo(simpleWarnInfo).build();
     }
     return simpleConfig;
   }
@@ -54,8 +54,8 @@ public class LogContext {
   }
 
   public static void setWarnExceptionExtend(Boolean warnExceptionExtend) {
-    LogContext.warnExceptionExtend = warnExceptionExtend;
-    if (warnExceptionExtend && !LogContext.doWarnExceptionList.isEmpty()) {
+    AlarmLogContext.warnExceptionExtend = warnExceptionExtend;
+    if (warnExceptionExtend && !AlarmLogContext.doWarnExceptionList.isEmpty()) {
       genExtendWarnExceptionList();
     }
   }
@@ -65,30 +65,30 @@ public class LogContext {
   }
 
   public static void addDoWarnExceptionList(List<String> doWarnExceptionList) {
-    LogContext.doWarnExceptionList.addAll(doWarnExceptionList);
-    if (LogContext.warnExceptionExtend) {
+    AlarmLogContext.doWarnExceptionList.addAll(doWarnExceptionList);
+    if (AlarmLogContext.warnExceptionExtend) {
       genExtendWarnExceptionList(doWarnExceptionList);
     }
   }
 
   public static void setDoWarnExceptionList(List<String> doWarnExceptionList) {
-    LogContext.doWarnExceptionList = doWarnExceptionList;
-    if (LogContext.warnExceptionExtend) {
+    AlarmLogContext.doWarnExceptionList = doWarnExceptionList;
+    if (AlarmLogContext.warnExceptionExtend) {
       genExtendWarnExceptionList();
     }
   }
 
   public static boolean doWarnException(Throwable warnExceptionClass) {
-    return LogContext.warnExceptionExtend ? ExceptionUtils.doWarnExceptionExtend(warnExceptionClass, LogContext.doExtendWarnExceptionList) : ExceptionUtils.doWarnExceptionName(warnExceptionClass, LogContext.doWarnExceptionList);
+    return AlarmLogContext.warnExceptionExtend ? ExceptionUtils.doWarnExceptionExtend(warnExceptionClass, AlarmLogContext.doExtendWarnExceptionList) : ExceptionUtils.doWarnExceptionName(warnExceptionClass, AlarmLogContext.doWarnExceptionList);
   }
 
   @SuppressWarnings("unchecked")
   private static void genExtendWarnExceptionList() {
-    for (String className : LogContext.doWarnExceptionList) {
+    for (String className : AlarmLogContext.doWarnExceptionList) {
       try {
-        LogContext.doExtendWarnExceptionList.add((Class<? extends Throwable>) Class.forName(className));
+        AlarmLogContext.doExtendWarnExceptionList.add((Class<? extends Throwable>) Class.forName(className));
       } catch (ClassNotFoundException e) {
-        logger.error("init LogContext classNotFoundException, className [{}]", className);
+        logger.error("init AlarmLogContext classNotFoundException, className [{}]", className);
       }
     }
   }
@@ -97,9 +97,9 @@ public class LogContext {
   private static void genExtendWarnExceptionList(List<String> doWarnExceptionList) {
     for (String className : doWarnExceptionList) {
       try {
-        LogContext.doExtendWarnExceptionList.add((Class<? extends Throwable>) Class.forName(className));
+        AlarmLogContext.doExtendWarnExceptionList.add((Class<? extends Throwable>) Class.forName(className));
       } catch (ClassNotFoundException e) {
-        logger.error("init LogContext classNotFoundException, className [{}]", className);
+        logger.error("init AlarmLogContext classNotFoundException, className [{}]", className);
       }
     }
   }

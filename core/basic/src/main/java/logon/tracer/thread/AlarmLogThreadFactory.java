@@ -3,7 +3,7 @@ package logon.tracer.thread;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class LogThreadFactory implements ThreadFactory {
+public class AlarmLogThreadFactory implements ThreadFactory {
 
   private static final ThreadGroup THREAD_GROUP = new ThreadGroup("alarmLog");
 
@@ -15,31 +15,32 @@ public class LogThreadFactory implements ThreadFactory {
 
   private boolean daemon;
 
-  private LogThreadFactory() {
+  private AlarmLogThreadFactory() {
   }
 
-  private LogThreadFactory(String prefix) {
+  private AlarmLogThreadFactory(String prefix) {
     this.prefix = prefix;
   }
 
-  public LogThreadFactory(String prefix, int newPriority, boolean daemon) {
+  public AlarmLogThreadFactory(String prefix, int newPriority, boolean daemon) {
     this.prefix = prefix;
     this.newPriority = newPriority;
     this.daemon = daemon;
   }
 
-  public static LogThreadFactory create(String prefix) {
+  public static AlarmLogThreadFactory create(String prefix) {
     return create(prefix, false, Thread.NORM_PRIORITY);
   }
 
-  public static LogThreadFactory create(String prefix, boolean daemon) {
+  public static AlarmLogThreadFactory create(String prefix, boolean daemon) {
     return create(prefix, daemon, Thread.NORM_PRIORITY);
   }
 
-  public static LogThreadFactory create(String prefix, boolean daemon, int newPriority) {
-    return new LogThreadFactory(prefix, newPriority, daemon);
+  public static AlarmLogThreadFactory create(String prefix, boolean daemon, int newPriority) {
+    return new AlarmLogThreadFactory(prefix, newPriority, daemon);
   }
 
+  @Override
   public Thread newThread(Runnable r) {
     Thread thread = new Thread(THREAD_GROUP, r, THREAD_GROUP.getName() + "-" + prefix + "-" + THREAD_NUMBER.getAndIncrement());
     thread.setDaemon(daemon);

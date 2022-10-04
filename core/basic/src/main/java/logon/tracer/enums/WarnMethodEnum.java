@@ -9,7 +9,7 @@ public enum WarnMethodEnum {
   /**
    * mail
    */
-  MAIL("");
+  MAIL("logon.tracer.MailWarnService");
 
   private String className;
 

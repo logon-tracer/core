@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Logon {
+public @interface Alarm {
 
   Class<? extends Throwable>[] doWarnException() default {Throwable.class};
 

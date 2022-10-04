@@ -11,6 +11,8 @@
     <module>basic</module>
     <module>aspect</module>
     <module>warn-basic</module>
+    <module>warn-mail</module>
+    <module>source</module>
   </modules>
 
   <name>logon-tracer</name>

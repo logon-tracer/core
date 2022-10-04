@@ -1,9 +1,9 @@
 package logon.tracer.context;
 
-import logon.tracer.dto.MailContent;
-import logon.tracer.dto.LogSimpleConfig;
+import logon.tracer.dto.AlarmMailContent;
+import logon.tracer.dto.AlarmLogSimpleConfig;
 
-public interface MessageContext {
+public interface AlarmMessageContext {
 
   /**
    * Customize the content sent to mail.
@@ -12,5 +12,5 @@ public interface MessageContext {
    * @param config    The config context.
    * @return Content sent to mail.
    */
-  MailContent mailContent(InfoContext context, Throwable throwable, LogSimpleConfig config);
+  AlarmMailContent mailContent(AlarmInfoContext context, Throwable throwable, AlarmLogSimpleConfig config);
 }
