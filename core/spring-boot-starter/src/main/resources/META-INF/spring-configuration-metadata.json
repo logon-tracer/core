@@ -1,0 +1,102 @@
+{
+  "properties": [
+    {
+      "name": "spring.alarm-log.do-warn-exception",
+      "type": "java.util.List<java.lang.String>",
+      "description": "do warn exception list.",
+      "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
+    },
+    {
+      "name": "spring.alarm-log.max-retry-times",
+      "type": "java.lang.Integer",
+      "defaultValue": 3,
+      "description": "send alarm message error max retry times.",
+      "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
+    },
+    {
+      "name": "spring.alarm-log.retry-sleep-millis",
+      "type": "java.lang.Integer",
+      "defaultValue": 1000,
+      "description": "send alarm message error thread sleep millis.",
+      "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
+    },
+    {
+      "name": "spring.alarm-log.print-stack-trace",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "enabled warn message print stack trace.",
+      "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
+    },
+    {
+      "name": "spring.alarm-log.simple-warn-info",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "enabled simple warn message info.",
+      "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn-exception-extend",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "extend do warn exception.",
+      "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn.mail.enabled",
+      "type": "java.lang.Boolean",
+      "description": "enabled send mail.",
+      "defaultValue": false,
+      "sourceType": "logon.tracer.autoconfigure.MailConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn.mail.smtpHost",
+      "type": "java.lang.String",
+      "description": "send mail smtp host.",
+      "sourceType": "logon.tracer.autoconfigure.MailConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn.mail.smtpPort",
+      "type": "java.lang.String",
+      "description": "send mail smtp port.",
+      "sourceType": "logon.tracer.autoconfigure.MailConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn.mail.to",
+      "type": "java.lang.String",
+      "description": "send mail to.",
+      "sourceType": "logon.tracer.autoconfigure.MailConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn.mail.from",
+      "type": "java.lang.String",
+      "description": "send mail from.",
+      "sourceType": "logon.tracer.autoconfigure.MailConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn.mail.username",
+      "type": "java.lang.String",
+      "description": "send mail username.",
+      "sourceType": "logon.tracer.autoconfigure.MailConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn.mail.password",
+      "type": "java.lang.String",
+      "description": "send mail password.",
+      "sourceType": "logon.tracer.autoconfigure.MailConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn.mail.ssl",
+      "type": "java.lang.Boolean",
+      "description": "send mail enable ssl.",
+      "defaultValue": true,
+      "sourceType": "logon.tracer.autoconfigure.MailConfig"
+    },
+    {
+      "name": "spring.alarm-log.warn.mail.debug",
+      "type": "java.lang.Boolean",
+      "description": "send mail enable debug.",
+      "defaultValue": false,
+      "sourceType": "logon.tracer.autoconfigure.MailConfig"
+    }
+  ]
+}

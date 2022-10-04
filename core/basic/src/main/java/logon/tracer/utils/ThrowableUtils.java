@@ -10,14 +10,6 @@ public class ThrowableUtils {
   private static final String SEPARATOR = "\n";
   private static final String HTML_SEPARATOR = "<br />";
 
-  public static String workWeixinContent(AlarmInfoContext context, Throwable throwable) {
-    return defaultContent(context, throwable, SEPARATOR);
-  }
-
-  public static String dingtalkContent(AlarmInfoContext context, Throwable throwable) {
-    return defaultContent(context, throwable, SEPARATOR);
-  }
-
   public static AlarmMailContent mailSubjectContent(AlarmInfoContext context, Throwable throwable) {
     return new AlarmMailContent(context.getMessage(), defaultContent(context, throwable, HTML_SEPARATOR));
   }

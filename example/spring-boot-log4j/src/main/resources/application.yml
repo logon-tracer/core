@@ -1,0 +1,21 @@
+server:
+  port: 8191
+spring:
+  alarm-log:
+    warn:
+      mail:
+        enabled: true
+        smtpHost: smtp.qq.com
+        smtpPort: 465
+        to: huchengyea@163.com
+        from: 2414776185@qq.com
+        username: 2414776185@qq.com
+        password: HCYhcy@0901
+        # xwxecsnkadlvebfd   kyhgzzftugjfecad  waar bkiw qhrc djbi
+      warn-exception-extend: false
+      simple-warn-info: false
+      print-stack-trace: true
+      max-retry-times: 1
+      retry-sleep-millis: 3000
+      do-warn-exception:
+        - java.lang.Throwable

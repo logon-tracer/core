@@ -6,6 +6,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.Properties;
+
+import com.sun.mail.util.MailSSLSocketFactory;
 import logon.tracer.context.AlarmInfoContext;
 import logon.tracer.context.AlarmLogContext;
 import logon.tracer.dto.AlarmMailContent;
@@ -55,12 +57,18 @@ public class MailWarnService extends BaseWarnService{
 
   @Override
   protected void doSend(AlarmInfoContext context, Throwable throwable) throws Exception {
+    System.out.println("////////////////");
+    System.out.println(smtpHost);
+    System.out.println("////////////////");
+    MailSSLSocketFactory sf = new MailSSLSocketFactory();
+    sf.setTrustAllHosts(true);
     Properties props = new Properties();
     props.setProperty("mail.smtp.auth", "true");
     props.setProperty("mail.transport.protocol", "smtp");
     props.setProperty("mail.smtp.host", smtpHost);
     props.setProperty("mail.smtp.port", smtpPort);
     props.put("mail.smtp.ssl.enable", true);
+    props.put("mail.smtp.ssl.socketFactory", sf);
     Session session = Session.getInstance(props);
     session.setDebug(false);
     MimeMessage msg = new MimeMessage(session);
