@@ -57,9 +57,6 @@ public class MailWarnService extends BaseWarnService{
 
   @Override
   protected void doSend(AlarmInfoContext context, Throwable throwable) throws Exception {
-    System.out.println("////////////////");
-    System.out.println(smtpHost);
-    System.out.println("////////////////");
     MailSSLSocketFactory sf = new MailSSLSocketFactory();
     sf.setTrustAllHosts(true);
     Properties props = new Properties();

@@ -7,7 +7,7 @@ spring:
         enabled: true
         smtpHost: smtp.163.com
         smtpPort: 465
-        to: 2959698930@qq.com
+        to: 2959698930@qq.com,2414776185@qq.com
         from: 15557422216@163.com
         username: 15557422216@163.com
         password: PSAVOVLHPJNOIYZY
