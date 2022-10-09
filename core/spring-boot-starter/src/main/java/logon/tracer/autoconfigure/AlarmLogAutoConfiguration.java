@@ -12,11 +12,12 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Slf4j
-@Configuration
+@Component
 @EnableConfigurationProperties(AlarmLogConfig.class)
 public class AlarmLogAutoConfiguration {
   @Configuration
@@ -30,10 +31,10 @@ public class AlarmLogAutoConfiguration {
       MailWarnService mailWarnService = new MailWarnService(mailConfig.getSmtpHost(), mailConfig.getSmtpPort(), mailConfig.getTo(), mailConfig.getFrom(), mailConfig.getUsername(), mailConfig.getPassword());
       mailWarnService.setSsl(mailConfig.getSsl());
       mailWarnService.setDebug(mailConfig.getDebug());
+      setDataChangedListener(mailWarnService);
       return mailWarnService;
     }
 
-    @Autowired
     void setDataChangedListener(MailWarnService mailWarnService) {
       AlarmLogWarnServiceFactory.setAlarmLogWarnService(mailWarnService);
     }
