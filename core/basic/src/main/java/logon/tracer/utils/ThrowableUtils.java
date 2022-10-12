@@ -62,7 +62,7 @@ public class ThrowableUtils {
   private static StringBuilder getDefaultHtml() {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(
-      "    <div style=\"display: grid; font-size: 16px; grid-template-columns: 20%% 80%%; grid-auto-columns: 1fr; gap: 0px 10px; grid-auto-flow: row;\n" +
+      "    <div style=\"display: grid; font-size: 16px; grid-template-columns: 27%% 73%%; grid-auto-columns: 1fr; gap: 0px 10px; grid-auto-flow: row;\n" +
         "        grid-template-areas:\n" +
         "            'cause cause-text'\n" +
         "            'error-level error-level-text'\n" +
@@ -83,34 +83,34 @@ public class ThrowableUtils {
       stringBuilder.append(";\">\n");
     }
     stringBuilder.append(
-        "      <div style=\"grid-area: cause; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">错误原因:</div>\n" +
+        "      <div style=\"grid-area: cause; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">message:</div>\n" +
         "      <div style=\"grid-area: cause-text; margin-bottom: 10px; color: #FC9768;\">%s</div>\n" +
-        "      <div style=\"grid-area: error-level; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">级别:</div>\n" +
+        "      <div style=\"grid-area: error-level; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">level:</div>\n" +
         "      <div style=\"grid-area: error-level-text; margin-bottom: 10px; color: red; font-weight: bold;\">%s</div>\n" +
-        "      <div style=\"grid-area: exc; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">异常:</div>\n" +
+        "      <div style=\"grid-area: exc; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">exception:</div>\n" +
         "      <div style=\"grid-area: exc-text; margin-bottom: 10px;\">%s</div>\n" +
-        "      <div style=\"grid-area: thread; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">线程:</div>\n" +
+        "      <div style=\"grid-area: thread; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">thread:</div>\n" +
         "      <div style=\"grid-area: thread-text; margin-bottom: 10px;\">%s</div>\n" +
-        "      <div style=\"grid-area: location; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">位置信息:</div>\n" +
+        "      <div style=\"grid-area: location; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">location:</div>\n" +
         "      <div style=\"grid-area: location-empty;\"></div>\n" +
-        "      <div style=\"grid-area: package; margin: 0 0 10px 25%%; font-weight: bold; font-size: 18px;\">包名:</div>\n" +
+        "      <div style=\"grid-area: package; margin: 0 0 10px 25%%; font-weight: bold; font-size: 18px;\">package:</div>\n" +
         "      <div style=\"grid-area: package-text; margin-bottom: 10px;\">%s</div>\n" +
         "      <div style=\"grid-area: down-arrow1;\"></div>\n" +
         "      <div style=\"grid-area: down-arrow1-empty; margin-left: 20px;\">↓</div>\n" +
-        "      <div style=\"grid-area: file; margin: 0 0 10px 25%%; font-weight: bold; font-size: 18px;\">文件名:</div>\n" +
+        "      <div style=\"grid-area: file; margin: 0 0 10px 25%%; font-weight: bold; font-size: 18px;\">file-name:</div>\n" +
         "      <div style=\"grid-area: file-text; margin-bottom: 10px;\">%s</div>\n" +
         "      <div style=\"grid-area: down-arrow2;\"></div>\n" +
         "      <div style=\"grid-area: down-arrow2-empty; margin-left: 20px;\">↓</div>\n" +
-        "      <div style=\"grid-area: classname; margin: 0 0 10px 25%%; font-weight: bold; font-size: 18px;\">类名:</div>\n" +
+        "      <div style=\"grid-area: classname; margin: 0 0 10px 25%%; font-weight: bold; font-size: 18px;\">class-name:</div>\n" +
         "      <div style=\"grid-area: classname-text; margin-bottom: 10px;\">%s</div>\n" +
         "      <div style=\"grid-area: down-arrow3;\"></div>\n" +
         "      <div style=\"grid-area: down-arrow3-empty; margin-left: 20px;\">↓</div>\n" +
-        "      <div style=\"grid-area: method; margin: 0 0 10px 25%%; font-weight: bold; font-size: 18px;\">方法名:</div>\n" +
+        "      <div style=\"grid-area: method; margin: 0 0 10px 25%%; font-weight: bold; font-size: 18px;\">method-name:</div>\n" +
         "      <div style=\"grid-area: method-text; margin-bottom: 10px;\">%s</div>"
       );
     if (AlarmLogContext.getPrintStackTrace()) {
       stringBuilder.append(
-        "      <div style=\"grid-area: stack-trace; margin: 0 0 10px 25%%; font-weight: bold; font-size: 18px;\">堆栈信息:</div>\n" +
+        "      <div style=\"grid-area: stack-trace; margin-bottom: 10px; font-weight: bold; font-size: 18px;\">stack-trace:</div>\n" +
         "      <div style=\"grid-area: stack-trace-text; margin-bottom: 10px;\">%s</div>"
       );
     }
