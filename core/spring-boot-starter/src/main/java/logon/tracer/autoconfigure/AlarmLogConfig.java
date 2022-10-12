@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.List;
 
 @Data
-@ConfigurationProperties(prefix = "spring.alarm-log")
+@ConfigurationProperties(prefix = "spring.alarm-log.warn")
 public class AlarmLogConfig {
 
   private Integer maxRetryTimes = 3;
