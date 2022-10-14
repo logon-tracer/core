@@ -1,4 +1,4 @@
-package org.example.config;
+package org.example.exception.config;
 
 import logon.tracer.context.AlarmInfoContext;
 import logon.tracer.context.AlarmMessageContext;

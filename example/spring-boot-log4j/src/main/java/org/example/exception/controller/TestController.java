@@ -1,23 +1,22 @@
-package org.example.controller;
+package org.example.exception.controller;
 
 import logon.tracer.helper.AlarmLogHelper;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.example.exception.TestAspectException;
-import org.example.exception.TestExtendsException;
-import org.example.exception.TestExtendsRuntimeException;
-import org.example.exception.TestImplException;
-import org.example.service.TestService;
+import org.example.exception.exception.TestAspectException;
+import org.example.exception.exception.TestExtendsException;
+import org.example.exception.exception.TestExtendsRuntimeException;
+import org.example.exception.exception.TestImplException;
+import org.example.exception.service.TestService;
 import org.slf4j.MarkerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 @RestController
 public class TestController {
   private static Logger logger = LogManager.getLogger(TestController.class);
-  @Resource
+  @Autowired
   private TestService testService;
 
   @GetMapping("/test1")
