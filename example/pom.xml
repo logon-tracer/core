@@ -11,7 +11,7 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
-  <groupId>logon.tracer.example</groupId>
+  <groupId>io.github.logon-tracer.example</groupId>
   <artifactId>example</artifactId>
   <packaging>pom</packaging>
   <version>0.0.1</version>

@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>logon.tracer</groupId>
+  <groupId>io.github.logon-tracer</groupId>
   <artifactId>logon-tracer</artifactId>
   <packaging>pom</packaging>
   <version>0.0.1</version>
@@ -13,7 +13,7 @@
     <module>warn-basic</module>
     <module>warn-mail</module>
     <module>source</module>
-      <module>spring-boot-starter</module>
+    <module>spring-boot-starter</module>
   </modules>
 
   <name>logon-tracer</name>
