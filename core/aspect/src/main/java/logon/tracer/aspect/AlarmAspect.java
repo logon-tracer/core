@@ -47,6 +47,7 @@ public class AlarmAspect {
       executorService.execute(() -> AlarmLogWarnServiceFactory.getServiceList().forEach(alarmLogWarnService -> alarmLogWarnService.send(
         AlarmInfoContext.builder()
           .message(ex.getMessage())
+          .level("ERROR")
           .throwableName(ex.getClass().getName())
           .loggerName(joinPoint.getSignature().getDeclaringTypeName())
           .threadName(threadName)
