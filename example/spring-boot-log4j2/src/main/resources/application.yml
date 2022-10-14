@@ -1,0 +1,24 @@
+server:
+  port: 8191
+logging:
+  config: classpath:log4j2-spring.xml
+spring:
+  alarm-log:
+    warn:
+      mail:
+        enabled: true
+        smtpHost: smtp.163.com
+        smtpPort: 25
+        to: 2414776185@qq.com
+        from: huchengyea@163.com
+        username: huchengyea@163.com
+        password: JKQABFYQDKWSUPHP
+        # xwxecsnkadlvebfd   kyhgzzftugjfecad  waarbkiwqhrcdjbi  HCYhcy@0901
+      warn-exception-extend: false
+      simple-warn-info: false
+      print-stack-trace: true
+      max-retry-times: 1
+      retry-sleep-millis: 3000
+      do-warn-exception:
+        - java.lang.Throwable
+        - java.lang.Exception
