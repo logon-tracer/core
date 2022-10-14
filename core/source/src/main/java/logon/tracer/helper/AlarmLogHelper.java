@@ -9,6 +9,6 @@ public class AlarmLogHelper {
   }
 
   public static PrintLogHelper getPrintLogInstance() {
-    return new PrintLogHelper(false);
+    return new PrintLogHelper(true);
   }
 }
