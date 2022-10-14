@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+  <appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+
+    <AlarmLog name="AlarmLog">
+      <warnExceptionExtend>false</warnExceptionExtend>
+      <doWarnException>java.lang.Exception,java.lang.RuntimeException</doWarnException>
+    </AlarmLog>
+
+    <Async name="AsyncConsole">
+      <AppenderRef ref="Console"/>
+    </Async>
+
+    <Async name="AsyncAlarmLog">
+      <AppenderRef ref="AlarmLog"/>
+    </Async>
+
+  </appenders>
+  <loggers>
+    <root level="INFO">
+      <appender-ref ref="AsyncConsole"/>
+      <appender-ref ref="AsyncAlarmLog" level="ERROR" />
+    </root>
+  </loggers>
+</configuration>
