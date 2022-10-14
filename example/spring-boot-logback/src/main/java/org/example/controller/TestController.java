@@ -22,22 +22,22 @@ public class TestController {
 
   @GetMapping("/test1")
   public void test1() {
-    AlarmLogHelper.getPrintLogInstance(true).error("123");
-    AlarmLogHelper.getPrintLogInstance(true).error("123", new RuntimeException());
-    AlarmLogHelper.getPrintLogInstance(true).error("123:{}", 456);
-    AlarmLogHelper.getPrintLogInstance(true).error("123:{}", 456, new RuntimeException());
-    AlarmLogHelper.getPrintLogInstance(true).error("123:{}:{}", 456, 789);
-    AlarmLogHelper.getPrintLogInstance(true).error("123:{}:{}", 456, 789, new RuntimeException());
-    AlarmLogHelper.getPrintLogInstance(true).error("123:{}:{}:{}", 456, 789, "111");
-    AlarmLogHelper.getPrintLogInstance(true).error("123:{}:{}:{}", 456, 789, "111", new RuntimeException());
-    AlarmLogHelper.getPrintLogInstance(true).error(MarkerFactory.getMarker("test"), "123");
-    AlarmLogHelper.getPrintLogInstance(true).error(MarkerFactory.getMarker("test"), "123", new RuntimeException());
-    AlarmLogHelper.getPrintLogInstance(true).error(MarkerFactory.getMarker("test"), "123:{}", 456);
-    AlarmLogHelper.getPrintLogInstance(true).error(MarkerFactory.getMarker("test"), "123:{}", 456, new RuntimeException());
-    AlarmLogHelper.getPrintLogInstance(true).error(MarkerFactory.getMarker("test"), "123:{}:{}", 456, 789);
-    AlarmLogHelper.getPrintLogInstance(true).error(MarkerFactory.getMarker("test"), "123:{}:{}", 456, 789, new RuntimeException());
-    AlarmLogHelper.getPrintLogInstance(true).error(MarkerFactory.getMarker("test"), "123:{}:{}:{}", 456, 789, "111");
-    AlarmLogHelper.getPrintLogInstance(true).error(MarkerFactory.getMarker("test"), "123:{}:{}:{}", 456, 789, "111", new RuntimeException());
+    AlarmLogHelper.getPrintLogInstance().error("123");
+    AlarmLogHelper.getPrintLogInstance().error("123", new RuntimeException());
+    AlarmLogHelper.getPrintLogInstance().error("123:{}", 456);
+    AlarmLogHelper.getPrintLogInstance().error("123:{}", 456, new RuntimeException());
+    AlarmLogHelper.getPrintLogInstance().error("123:{}:{}", 456, 789);
+    AlarmLogHelper.getPrintLogInstance().error("123:{}:{}", 456, 789, new RuntimeException());
+    AlarmLogHelper.getPrintLogInstance().error("123:{}:{}:{}", 456, 789, "111");
+    AlarmLogHelper.getPrintLogInstance().error("123:{}:{}:{}", 456, 789, "111", new RuntimeException());
+    AlarmLogHelper.getPrintLogInstance().error(MarkerFactory.getMarker("test"), "123");
+    AlarmLogHelper.getPrintLogInstance().error(MarkerFactory.getMarker("test"), "123", new RuntimeException());
+    AlarmLogHelper.getPrintLogInstance().error(MarkerFactory.getMarker("test"), "123:{}", 456);
+    AlarmLogHelper.getPrintLogInstance().error(MarkerFactory.getMarker("test"), "123:{}", 456, new RuntimeException());
+    AlarmLogHelper.getPrintLogInstance().error(MarkerFactory.getMarker("test"), "123:{}:{}", 456, 789);
+    AlarmLogHelper.getPrintLogInstance().error(MarkerFactory.getMarker("test"), "123:{}:{}", 456, 789, new RuntimeException());
+    AlarmLogHelper.getPrintLogInstance().error(MarkerFactory.getMarker("test"), "123:{}:{}:{}", 456, 789, "111");
+    AlarmLogHelper.getPrintLogInstance().error(MarkerFactory.getMarker("test"), "123:{}:{}:{}", 456, 789, "111", new RuntimeException());
     logger.error("test1", new TestImplException());
   }
 
