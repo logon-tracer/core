@@ -1,16 +1,16 @@
 package logon.tracer;
 
+import com.sun.mail.util.MailSSLSocketFactory;
+import logon.tracer.context.AlarmInfoContext;
+import logon.tracer.context.AlarmLogContext;
+import logon.tracer.dto.AlarmMailContent;
+
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.Properties;
-
-import com.sun.mail.util.MailSSLSocketFactory;
-import logon.tracer.context.AlarmInfoContext;
-import logon.tracer.context.AlarmLogContext;
-import logon.tracer.dto.AlarmMailContent;
 
 public class MailWarnService extends BaseWarnService{
 
@@ -70,9 +70,7 @@ public class MailWarnService extends BaseWarnService{
     session.setDebug(false);
     MimeMessage msg = new MimeMessage(session);
     msg.setFrom(new InternetAddress(from));
-    for (String toUser : to.split(",")) {
-      msg.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(toUser));
-    }
+    msg.setRecipients(MimeMessage.RecipientType.TO, to);
     AlarmMailContent alarmMailContent = AlarmLogContext.getAlarmMessageContext().mailContent(context, throwable, AlarmLogContext.getSimpleConfig());
     msg.setSubject(alarmMailContent.getSubject(), "UTF-8");
     msg.setContent(alarmMailContent.getContent(), "text/html;charset=UTF-8");
