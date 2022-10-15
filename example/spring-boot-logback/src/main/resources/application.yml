@@ -7,12 +7,12 @@ spring:
     warn:
       mail:
         enabled: true
-        smtpHost: smtp.163.com
-        smtpPort: 465
-        to: 2959698930@qq.com,2414776185@qq.com
-        from: 15557422216@163.com
-        username: 15557422216@163.com
-        password: PSAVOVLHPJNOIYZY
+        smtpHost: xxxxxxxxx
+        smtpPort: xxx
+        to: xxx
+        from: xxx
+        username: xxx
+        password: xxx
         # xwxecsnkadlvebfd   kyhgzzftugjfecad  waarbkiwqhrcdjbi  HCYhcy@0901
       warn-exception-extend: false
       simple-warn-info: false
