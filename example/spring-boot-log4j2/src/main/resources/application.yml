@@ -7,12 +7,12 @@ spring:
     warn:
       mail:
         enabled: true
-        smtpHost: smtp.qq.com
-        smtpPort: 465
-        to:
-        from:
-        username:
-        password:
+        smtpHost: xxxxxxxxx
+        smtpPort: xxx
+        to: xxx
+        from: xxx
+        username: xxx
+        password: xxx
         # xwxecsnkadlvebfd   kyhgzzftugjfecad  waarbkiwqhrcdjbi  HCYhcy@0901
       warn-exception-extend: false
       simple-warn-info: false
