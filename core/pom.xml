@@ -7,6 +7,45 @@
   <artifactId>logon-tracer</artifactId>
   <packaging>pom</packaging>
   <version>0.0.1</version>
+
+  <licenses>
+    <!-- Apache许可证 -->
+    <license>
+      <name>The MIT License</name>
+      <url>https://github.com/logon-tracer/core/blob/main/LICENSE</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:github://github.com/logon-tracer/core</connection>
+    <developerConnection>scm:git@github.com:logon-tracer/core.git</developerConnection>
+    <url>https://github.com/logon-tracer/core</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>Elone Hoo</name>
+      <email>huchengyea@163.com</email>
+      <url>https://github.com/elonehoo</url>
+    </developer>
+    <developer>
+      <name>wuaqing</name>
+      <url>https://github.com/wuaqing</url>
+    </developer>
+    <developer>
+      <name>cjloveqhy</name>
+      <url>https://github.com/cjloveqhy</url>
+    </developer>
+    <developer>
+      <name>zhy</name>
+      <url>https://github.com/2434017367</url>
+    </developer>
+    <developer>
+      <name>李晨</name>
+      <url>https://github.com/LiChen233</url>
+    </developer>
+  </developers>
+
   <modules>
     <module>basic</module>
     <module>aspect</module>
@@ -18,6 +57,7 @@
 
   <name>logon-tracer</name>
   <description>Monitor the specified exception thrown in the log or the specified exception thrown in the method and class</description>
+  <url>https://github.com/logon-tracer/core</url>
 
   <properties>
     <java.version>11</java.version>
@@ -52,6 +92,18 @@
     </dependency>
   </dependencies>
 
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+
   <build>
     <plugins>
       <plugin>
@@ -66,7 +118,91 @@
           <target>11</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+          <compilerArgument>-Xlint:unchecked</compilerArgument>
+        </configuration>
+      </plugin>
+      <!-- Javadoc -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.4.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
+  <profiles>
+    <profile>
+      <id>release</id>
+      <distributionManagement>
+        <snapshotRepository>
+          <id>oss</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+          <id>oss</id>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+      </distributionManagement>
+      <build>
+        <plugins>
+          <!-- Source -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.2.1</version>
+            <executions>
+              <execution>
+                <id>oss</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Gpg Signature -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.6</version>
+            <executions>
+              <execution>
+                <id>oss</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.8</version>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>oss</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>true</autoReleaseAfterClose>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
