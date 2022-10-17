@@ -17,7 +17,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Publish to GitHub Packages
-        run: mvn --batch-mode deploy -DskipTests -Prelease-github
+        run: cd core && mvn --batch-mode deploy -DskipTests -Prelease-github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   release:
@@ -34,6 +34,7 @@ jobs:
      - name: Release Maven package
        uses: samuelmeuli/action-maven-publish@v1
        with:
+         directory: core
          maven_profiles: 'release'
          maven_args: '-DskipTests'
          gpg_private_key: ${{ secrets.gpg_private_key }}
