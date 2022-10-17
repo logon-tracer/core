@@ -249,7 +249,7 @@
         <repository>
           <id>github</id>
           <name>GitHub Packages</name>
-          <url>https://maven.pkg.github.com/mxsm/rain</url>
+          <url>https://maven.pkg.github.com/logon-tracer/core</url>
         </repository>
       </distributionManagement>
     </profile>
