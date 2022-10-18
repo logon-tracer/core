@@ -7,7 +7,7 @@
 </div>
 
 <p align="center">
- <a href="https://logon-tracer.elonehoo.xyz">Documentation</a> | <a href="https://logon-tracer.elonehoo.xyz/guide/">Getting Started</a> | <a href="https://logon-tracer.elonehoo.xyz/guide/#examples">Examples</a> | <a href="https://logon-tracer.elonehoo.xyz/guide/why.html">Why Vitest?</a>
+ <a href="https://logon-tracer.elonehoo.xyz">Documentation</a> | <a href="https://logon-tracer.elonehoo.xyz/guide/">Getting Started</a> | <a href="https://logon-tracer.elonehoo.xyz/guide/#examples">Examples</a> | <a href="https://logon-tracer.elonehoo.xyz/guide/why.html">Why LogonTracer?</a>
 </p>
 
 <p align="center">
