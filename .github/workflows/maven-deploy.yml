@@ -1,27 +1,22 @@
-name: Publish package to the Maven Central Repository and GitHub Packages
+name: Publish package to the GitHub Packages
 on:
   push:
     branches:
     - main
 jobs:
-  release:
-    runs-on: ubuntu-18.04
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
-     - name: Check out Git repository
-       uses: actions/checkout@v2
-
-     - name: Install Java and Maven
-       uses: actions/setup-java@v1
-       with:
-         java-version: 11
-
-     - name: Release Maven package
-       uses: samuelmeuli/action-maven-publish@v1.4.0
-       with:
-         directory: core
-         maven_profiles: 'release'
-         maven_args: '-DskipTests'
-         gpg_private_key: ${{ secrets.gpg_private_key }}
-         gpg_passphrase: ${{ secrets.gpg_passphrase }}
-         nexus_username: ${{ secrets.OSSRH_USERNAME }}
-         nexus_password: ${{ secrets.OSSRH_TOKEN }}
+      - uses: actions/checkout@v3
+      - name: Set up Java for publishing to GitHub Packages
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Publish to GitHub Packages
+        run: cd core && mvn --batch-mode deploy -DskipTests -Prelease-github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
