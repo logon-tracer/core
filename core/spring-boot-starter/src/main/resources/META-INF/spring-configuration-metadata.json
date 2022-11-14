@@ -1,41 +1,41 @@
 {
   "properties": [
     {
-      "name": "spring.alarm-log.do-warn-exception",
+      "name": "spring.alarm-log.warn.do-warn-exception",
       "type": "java.util.List<java.lang.String>",
       "description": "do warn exception list.",
       "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
     },
     {
-      "name": "spring.alarm-log.max-retry-times",
+      "name": "spring.alarm-log.warn.max-retry-times",
       "type": "java.lang.Integer",
       "defaultValue": 3,
       "description": "send alarm message error max retry times.",
       "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
     },
     {
-      "name": "spring.alarm-log.retry-sleep-millis",
+      "name": "spring.alarm-log.warn.retry-sleep-millis",
       "type": "java.lang.Integer",
       "defaultValue": 1000,
       "description": "send alarm message error thread sleep millis.",
       "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
     },
     {
-      "name": "spring.alarm-log.print-stack-trace",
+      "name": "spring.alarm-log.warn.print-stack-trace",
       "type": "java.lang.Boolean",
       "defaultValue": false,
       "description": "enabled warn message print stack trace.",
       "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
     },
     {
-      "name": "spring.alarm-log.simple-warn-info",
+      "name": "spring.alarm-log.warn.simple-warn-info",
       "type": "java.lang.Boolean",
       "defaultValue": false,
       "description": "enabled simple warn message info.",
       "sourceType": "logon.tracer.autoconfigure.AlarmLogConfig"
     },
     {
-      "name": "spring.alarm-log.warn-exception-extend",
+      "name": "spring.alarm-log.warn.warn-exception-extend",
       "type": "java.lang.Boolean",
       "defaultValue": false,
       "description": "extend do warn exception.",
