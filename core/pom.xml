@@ -6,7 +6,7 @@
   <groupId>logon.tracer</groupId>
   <artifactId>logon-tracer</artifactId>
   <packaging>pom</packaging>
-  <version>0.0.2</version>
+  <version>0.0.3-beta1</version>
 
   <licenses>
     <!-- Apache许可证 -->
