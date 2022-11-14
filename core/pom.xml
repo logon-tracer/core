@@ -60,7 +60,7 @@
   <url>https://github.com/logon-tracer/core</url>
 
   <properties>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
     <log4j.version>1.2.17</log4j.version>
     <log4j12.version>2.0.3</log4j12.version>
     <mail.version>1.4.7</mail.version>
