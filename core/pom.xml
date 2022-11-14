@@ -6,7 +6,7 @@
   <groupId>logon.tracer</groupId>
   <artifactId>logon-tracer</artifactId>
   <packaging>pom</packaging>
-  <version>0.0.3-beta1</version>
+  <version>0.0.3-beta2</version>
 
   <licenses>
     <!-- Apache许可证 -->
@@ -63,7 +63,7 @@
     <java.version>17</java.version>
     <log4j.version>1.2.17</log4j.version>
     <log4j12.version>2.0.3</log4j12.version>
-    <mail.version>1.4.7</mail.version>
+    <mail.version>1.6.7</mail.version>
     <dependencies.version>2.7.4</dependencies.version>
   </properties>
   <dependencies>
@@ -79,8 +79,8 @@
       <version>${log4j12.version}</version>
     </dependency>
     <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>mail</artifactId>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>jakarta.mail</artifactId>
       <version>${mail.version}</version>
     </dependency>
     <dependency>
